@@ -1,0 +1,105 @@
+**Main.prg
+**Date: 12/09/09
+**Description :
+**Name: Renato
+
+** setup the application environment
+
+_Screen.WindowState = 2
+*_Screen.Caption = "Sistema Yocca Hnos. S.R.L. **Busqueda De Articulos de Giesse**"
+*_Screen.BackColor = RGB(128,128,128)
+*_screen.Icon = 'C:\ARCHIVOS DE PROGRAMA\MICROSOFT VISUAL FOXPRO 9\GRAPHICS\ICONS\TRAFFIC\TRFFC16.ICO'
+set sysmenu to default
+Local oldScreenLeft
+Local oldScreenTop
+Local oldScreenHeight
+Local oldScreenWidth
+Local oldScreenColor
+WITH _Screen
+   oldScreenLeft=.Left                 && Guardar el tamaño y la posición actuales
+   oldScreenTop=.Top
+   oldScreenHeight=.Height
+   oldScreenWidth=.Width
+   oldScreenColor = .Backcolor
+.LockScreen=.T.                     && Desactiva el redibujado de pantalla
+   .BackColor=rgb(192,192,192)         && Cambiar el color de fondo a gris
+   .BorderStyle=2                      && Cambiar el borde a doble
+   .Closable=.F.                       && Quitar botones de control de ventana
+   .ControlBox=.F.
+   .MaxButton=.T.
+   .MinButton=.T.
+   .Movable=.T.
+   .Height=650
+   .Width=900
+   .Caption="ORYVFP" 
+   .icon="c:\program files (x86)\microsoft visual foxpro 9\graphics\icons\office\clip01.ico"           && Establecer un título
+   .LockScreen=.F.                     && Activa el redibujado de pantalla
+ENDWITH
+With _Screen
+   .Left = oldScreenLeft               && Restablecer el tamaño
+   .Top = oldScreenTop                 && y posición original
+   .Height = oldScreenHeight
+   .Width  = oldScreenWidth
+   .LockScreen=.T.                     && Desactivar el redibujado de pantalla
+   .MaxButton=.T.
+   .MinButton=.T.
+   .Movable=.T.
+   .LockScreen=.F.  
+ENDWITH
+SET SYSMENU OFF
+ON SHUTDOWN do cleanup in MAIN.prg
+*SET PATH TO 
+SET TALK OFF
+SET DELETED on
+SET REPROCESS TO automatic
+SET EXCLUSIVE OFF
+SYS(2700,0)
+SET DEFAULT TO c:\sistemayocca\proj
+SET PATH TO data;reports;menus;prgs;ETIQUETA;menus;INFOBALL;FORMS;imagenes;images
+CLEAR all
+CLOSE all
+
+***turn off the toolbar
+RELEASE WINDOW "standard"
+***Setup Any menus
+DO menu3.mpr
+DO foxypreviewer2.app
+_Screen.oFoxyPreviewer.lOpenViewer=.t.
+SET PROCEDURE TO c:\sistemayocca\prgs\f_activawin.prg
+openform('historia2')
+*THIS.Refresh()
+  &&Show modally
+*THIS.Refresh()
+*!*	IF WEXIST("renlist") 
+*!*	IF renlist.Caption = "Busqueda de Articulos Giesse" 
+*!*	MESSAGEBOX("Esta pantalla ya existe") 
+*!*	renlist.Show 
+*!*	ENDIF 
+
+*Call login for (if any)
+
+
+** Start the read event 
+READ EVENT
+
+
+*** CLEAN UP
+CLEAR
+_Screen.BackColor = RGB(255,255,255)
+_Screen.Caption = "Microsoft Visual FoxPro"
+SET SYSMENU TO default
+*SHOW WINDOW standard
+SET STATUS bar off
+ON SHUTDOWN
+
+PROCEDURE cleanup
+CLEAR EVENTS     &&& Stop events processing
+
+_Screen.WindowState = 2
+*** close all open befor exiting
+FOR x = 1 TO _screen.FormCount
+  _screen.Forms[_screen.FormCount].Release()
+  NEXT x
+ENDPROC
+  
+  

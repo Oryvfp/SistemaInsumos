@@ -1,0 +1,42 @@
+**Main.prg
+**Date: 12/09/09
+**Description :
+**Name: Renato
+
+** setup the application environment
+
+*_Screen.WindowState = 0
+*_Screen.Caption = "Sistema Yocca Hnos. S.R.L. **Busqueda De Articulos de Giesse**"
+*_Screen.BackColor = RGB(128,128,128)
+*_screen.Icon = 'C:\ARCHIVOS DE PROGRAMA\MICROSOFT VISUAL FOXPRO 9\GRAPHICS\ICONS\TRAFFIC\TRFFC16.ICO'
+
+*ON SHUTDOWN do cleanup in MAIN2.prg
+*SET PATH TO 
+SET TALK OFF
+SET DELETED on
+SET REPROCESS TO automatic
+SET EXCLUSIVE OFF
+SYS(2700,0)
+SET DEFAULT TO c:\sistemayocca\proj
+SET PATH TO data;reports;menus;prgs;ETIQUETA;menus;INFOBALL;FORMS;imagenes;images
+CLEAR all
+CLOSE all
+
+***turn off the toolbar
+RELEASE WINDOW "standard"
+
+*** CLEAN UP
+CLEAR
+
+SET SYSMENU off
+*SHOW WINDOW standard
+
+*ON SHUTDOWN
+
+PROCEDURE cleanup
+CLEAR EVENTS     &&& Stop events processing
+
+
+ENDPROC
+  
+  

@@ -1,0 +1,1447 @@
+FOXYPREVIEWER - Report preview and exporting utility
+--------------------------------------------------------------------
+Created by Cesar Ch
+	vfpimaging@hotmail.com
+	http://weblogs.foxite.com/vfpimaging
+
+Consider donating to support this project:
+https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AVTDKLGYZ6KUC
+
+
+Update History
+===========================================
+
+v2.99z36 - 2017-03-30
+-------------------------------------------
+- Fix for "FR_FXListener NOT FOUND" after a CLEAR ALL or "DEBUGGER Cancel / Fix" in Development mode
+
+v2.99z35 - 2016-06-11
+-------------------------------------------
+- Fix in the Watermarks engine, that was not drawing the watermarks when reports used the _PAGETOTAL variable
+
+v2.99z34 - 2016-06-06
+-------------------------------------------
+- Fix in the Watermarks engine, that was not drawing the watermarks in subsequent reports
+
+v2.99z33 - 2016-06-04
+-------------------------------------------
+- Fix in the Watermarks engine, that was redrawing the watermark using a wrong existig handle. Thanks to Greg Green
+
+v2.99z32 - 2016-05-30
+-------------------------------------------
+- Fix in PR_PDFX, allowing to trap more errors due to a typo. Thanks to Oleg Dimuhametov
+
+v2.99z31 - 2016-04-11
+-------------------------------------------
+- Fix to allow "Tagged Formatting <TF>" in forms with "Private Data Session" enabled
+
+v2.99z30 - 2013-09-12
+-------------------------------------------
+- Fix to ignore empty records in "FoxyPreviewer_Settings.dbf". Thanks to Rahul Moudgill
+
+v2.99z29 - 2013-09-02
+-------------------------------------------
+- New Property: "lRepeatWhenFree", logical will print a second copy of the report in the 2nd lower part of the same paper sheet. Thanks to Tore Bleken for the suggestion.
+
+v2.99z28 - 2013-09-02
+-------------------------------------------
+- New tweaks in the property "lRepeatInPage"
+IMPORTANT: The page repetition will be applied only if you select a quantity of copies > 1
+You can leave the property "lRepeatInPage = .T." all the time on, to make FoxyPreviewer to print your report twice in the same page if the user wants more than one copy and if the report does not occupy more than half the page. This is a cool feature, allowing your users to save paper sheets!
+If the report contains more than one page, even if the contents do not use more than half the page, this property will not be considered. If you select "nCopies = 3" and "lRepeatInPage = .T.", having the needed space in the sheet of paper, FoxyPreviewer will print the report twice in the 1st paper, and another single time in the next sheet.
+- Fix by Hernan Cano: http://foxypreviewer.codeplex.com/workitem/10310
+
+v2.99z26 - 2013-08-28
+-------------------------------------------
+New feature: "lRepeatInPage" was enhanced, now it will duplicate the report in the same page only if there is space, otherwise, a copy will be printed in another page
+Fix when selecting more than 1 copy in the toolbar spinner, the 2nd page was being reduced
+Fix when the printer margin is non zero
+
+v2.99z25 - 2013-08-26
+-------------------------------------------
+Fix when selecting more than 1 copy in the toolbar spinner, was printing only one page in all times - DataType property for field 'eDevice' is invalid (Error 1544)
+
+v2.99z24 - 2013-08-11
+-------------------------------------------
+Fix in TO PRINTER mode - Thanks to Vilhelm-Ion Praisach
+Tweak in RTF Listener, to allow RTF documents to be opened by LibreOffice and OpenOffice - Thanks to Vilhelm-Ion Praisach
+
+v2.99z23 - 2013-08-01
+-------------------------------------------
+Fix in HTML DOCTYPE declaration - Thanks to  Iuliu Nedelcu 
+Fix in initial Language settings
+Fix in Settings form, was not applying the changes
+
+v2.99z22 - 2013-07-31
+-------------------------------------------
+Introduced new OBJECTTYPE #20
+Renders all FoxyPreviewer available file types in one single ReportListener. Just pass the File name and file extension in the "TO FILE" clause, and FOxyPreviewer will render the output according to the file extension passed. Extensions allowed: PDF, RTF, DOC, XLS, XML, HTM, HTML, MHT, "BMP", "BITMAP", "GIF", "JPG", "JPEG", "TIF", "TIFF", "PNG", "EMF"
+
+Several small fixes in HTML formatting - Thanks to Iuliu Nedelcu https://foxypreviewer.codeplex.com/workitem/10257
+Fix in HTML tag showing just the file name, without the path
+Update in HTML rendering, now using UTF-8 encoding
+
+Fix for error of missing table - Special thanks to Bennet Eze http://www.foxite.com/archives/0000378120.htm
+Fix in XPUTFILE() by Oleg Dimuhametov - http://www.foxite.com/archives/0000381489.htm
+Fix in Merged reports in Object Type 10 - https://foxypreviewer.codeplex.com/workitem/10131 , https://foxypreviewer.codeplex.com/workitem/10130
+Fix - not working in OBJECT TYPE mode - https://foxypreviewer.codeplex.com/workitem/10040
+Fixed Landscape printing when using "Copies > 1" or changing printer in the combobox from the toolbar
+
+v2.99z19 - 2013-04-29
+-------------------------------------------
+Introduced new OBJECT TYPE 20
+Fixed Landscape printing when using "Copies > 1" or changing printer in the combobox from the toolbar
+
+v2.99z16 - 2013-04-21
+-------------------------------------------
+Fix for "OBJTYPE #10 - 2nd report not charging fonts" https://foxypreviewer.codeplex.com/workitem/10041
+
+v2.99z14 - 2013-04-12
+-------------------------------------------
+Added support for printing and previewing in Unicodes. Just add the tag "<UC>" at the "User" tab at the "Properties" menu.
+
+v2.99z11 - 2013-03-24
+-------------------------------------------
+New fix in property "cDefFileName" to allow UNC directions, avoiding blank file names
+Updated Greek language in the localizations file, thanks to Nick Porfyris
+Now accepts setting the property "cDestFile" to have the same behavior of 'cSaveDefName' - character, the default name of the save file. Available in the SAVE AS dialog OR automatically used if lEmailAuto 
+Languages available: English, Portuguese, Spanish, Yurkish, Italian, Persian, Polish, Indonesian, German, Czech, Arabic, Greek, French, Swahili, Russian, Dutch, Chinese, Bulgarian, Traditional CHinese (Taiwan), Hungarian, Kazakh, Serbian
+
+v2.99z10 - 2013-03-01
+-------------------------------------------
+Fix in property "cDefFileName" to allow UNC directions
+New OBJECT TYPE #16, to save the report as Image without previewing
+Dates having year before 1900 will be treated as Characters, because Excel does not like years before 1900
+				* http://www.foxite.com/archives/0000371512.htm
+New Languages included: KAZAKH, thanks to Oleg Dimuhametov and SERBIAN, by Goran Curcic
+Update the nSaveFormat property when using OBJECTTYPE mode http://www.foxite.com/archives/0000368612.htm - Thanks to Tushar
+Removed a forgotten SET STEP ON in procedure SendCDOMail - Thanks to Nick Porfirys
+Fix in Sending emails - Thanks to Tarkan Haser
+
+v2.99z9 - 2012-12-11
+-------------------------------------------
+New property: "nPreviewBackColor" - numeric, RGB value, allows changing the back color of the report preview form
+New property: "lDoubleByteLanguage" - logical, allows to manually determine that the system is using a DOubleByte language. This is primarily to make the context menu for the Save button in the report preview toolbar work in these languages.
+Updated: Localization table for Polish language
+
+v2.99z8 - 2012-12-02
+-------------------------------------------
+Fix: Excel values were ignoring the SET POINT if Set("Currency") had "." dots
+Fix: Negative values expressed between "()" are now correclty converted in Excel 
+
+v2.99z7 - 2012-11-25
+-------------------------------------------
+Fix: Excel values were ignoring the SET POINT if Set("Point") was equal to SET("Separator")
+Updated: Localization table for Russian language
+
+v2.99z5 - 2012-11-18
+-------------------------------------------
+Fix: lAutoSendMail will be considered only in Complete mode
+
+v2.99z5 - 2012-11-08
+-------------------------------------------
+Fix: OBJTYPE 15 asking for choosing a table
+Fix: OBJTYPE 12 was keeping the Private DataSession opened 
+
+v2.99z4 - 2012-10-18
+-------------------------------------------
+Fix: PDFs were ignoring leading spaces in strings - http://www.foxite.com/archives/0000358232.htm by Tushar
+Fix: Dates in Excel were not respecting the original SET DATE settings in OBJTYPE 13 mode - http://foxypreviewer.codeplex.com/workitem/9674
+Fix: Terminal server \\tsclient\c can't be used as ".cOutputPath" - http://foxypreviewer.codeplex.com/workitem/9639 - Special thanks to Marcio Gomes Gonçalves
+Fix: Certain CodePages in RTFListener were not working - Thanks to J.F.Sant
+
+v2.99z3 - 2012-10-17
+-------------------------------------------
+Fix: PDFs were not respecting the CodePage In OBJTYPE mode - http://www.foxite.com/archives/0000357538.htm by Martin Krivka 
+Fix: SMTP password was not being sent correctly in simplified mode
+Fix: Removed remaining SET STEP command
+Fix: PDF different password but still cannot encrypt - http://foxypreviewer.codeplex.com/workitem/9672 by "HermanHo"
+
+v2.99z - 2012-10-01
+-------------------------------------------
+Fix: Stored Printer info will be ignored if printer is not present
+Fix: Excel opened twice the same worksheet
+Fix: Dynamics error
+Fix: Some values insisted appearing as "***" on 2nd run of report
+
+v2.99y - 2012-09-11
+-------------------------------------------
+Fix: Temp image files were not being deleted after PDF creation - http://www.foxite.com/archives/0000354566.htm
+
+v2.99x - 2012-09-10
+-------------------------------------------
+Fix: FoxyPreviewer Context menu was not being updated
+
+v2.99w - 2012-09-09
+-------------------------------------------
+Fix: "Combo change printer not working with frx saved with environment" http://foxypreviewer.codeplex.com/workitem/9624
+Fix: Close button was not appearing in the context menu when "lShowSettings = .F."
+
+v2.99v - 2012-08-31
+-------------------------------------------
+Fix in property: "nPDFLineHeightRatio", allowing to be used in Preview mode
+Fix in PDF rendering in some cases the correct font was not being used
+
+v2.99s - 2012-08-29
+-------------------------------------------
+Removed a SET STEP command in the "SetLanguage" method
+New property: "nPDFLineHeightRatio" - numeric, (0.10 - 2), determines the percentage to increase or decrease the line
+height of PDF documents when you have a CRLF in a field. Default = 1. This is to be used when you feel that for a specific font the line height should be modified. 
+
+v2.99s - 2012-08-28
+-------------------------------------------
+Fixed error "_goHelper" was not found
+
+v2.99q - 2012-08-26
+-------------------------------------------
+Reduced slightly the space between lines in PDFs
+Updated the localizations table, including the Hungarian language, now we have 20 languages!
+New method:
+- SendEmailUsingCDO
+Now, from the _Screen.oFoxyPreviewer, only in Simplified mode, you can access directly the internal procedures used by FoxyPreviewer to send emails using CDO. After setting all the general email settings in the _Screen.oFoxyPreviewer object, just call this method, sending the filename as parameter. See working sample "test_simplified_configureemail2.prg"
+
+v2.99p - 2012-08-23
+-------------------------------------------
+Fix for "Error when running in test environment" http://foxypreviewer.codeplex.com/workitem/9568
+
+v2.99o - 2012-08-20
+-------------------------------------------
+Update in the main listener to prevent bug in chained reports
+
+v2.99n - 2012-08-18
+-------------------------------------------
+Update in PDF Listener, allowing watermarks to be rendered when creating PDFs using OBJECT TYPE 10
+
+v2.99m - 2012-08-17
+-------------------------------------------
+** VERY IMPORTANT FIX **
+In some cases, when using Private datasessions, depending on the environment settings
+some reports rendered the data of the 1st field only. If you had this issue before, please test this release
+
+Other fixes / improvements
+
+Fix: FoxyPreviewer disabled form's close button - http://foxypreviewer.codeplex.com/workitem/9275
+Fix: Rearranged the order of the buttons in the preview toolbar and context menu, in order to make the buttons to appear at the same order in both places, thanks to Mark Winston
+
+New properties: 
+- “nThermFormWidth” – numeric, specifies the width of the Thermometer form. Useful when a big caption is needed. Works only if “.nThermType = 2 && WIndows default”
+- “lShowFileFormatIcons” - logical, allows hiding the file format icons in the context menus.
+
+Cool information:
+Mark Winston, brought to my knowledge that "sec(s) or secs" is not the correct abreviation for the word "seconds". After a small research, we found that just an "s" is the correct way to abreviate. I will not change the default behavior, because it's the way VFP origianlly used in Thermometer form, that shows the report progress. If you want to change it, it's very easy, just try:
+   DO FoxyPreviewer.App
+   _Screen.oFoxyPreviewer._secondstext = "s by Mark Winston"
+   REPORT FORM LOCFILE(_Samples + "\Solution\Reports\Wrapping.frx") PREVIEW
+
+BTW, You can play changing these properties below as well, if you prefer:
+? _Screen.oFoxyPreviewer._cancelinstrtext
+? _Screen.oFoxyPreviewer._attentiontext
+? _Screen.oFoxyPreviewer._cancelquerytext
+? _Screen.oFoxyPreviewer._initstatustext
+? _Screen.oFoxyPreviewer._prepassstatustext
+? _Screen.oFoxyPreviewer._secondstext
+
+
+
+
+v2.99c - 2012-08-08
+-------------------------------------------
+- Fix in PDF listener, adjusting some constant values, in order to store metadata correctly.
+http://foxypreviewer.codeplex.com/workitem/9434 - Thanks to Martin SYkora
+- Fix in RTF Listener, now making the default language according to the codepage selected (originally was always forcing to Russian)
+- Fix for issue: http://foxypreviewer.codeplex.com/workitem/9506
+- New property: cFaxPRG, allowing sending faxes from FoxyPreviewer using your custom Faxing procedures. Notice that FOxyPreviewer does not bring any internal code to manage faxes. With this property, I'm just opening a "door" to allow you to receive some info from FoxyPreviewer and send your documents using your Faxing app.
+To make Foxy show a "Send to fax" button in the email form, you need to fill the property “cFAXprg”, with the name of a PRG that will be responsible of sending the fax, for example:
+_Screen.oFoxyPreviewer.cFaxPrg = “mySendFax.prg”
+Then, your “MYSENDFAX.PRG” program MUST start with a LPARAMETERS statement, that will receive from FoxyPreviewer some needed parameters to send your fax:
+ 
+LPARAMETERS tcFile, tcFaxNumber, tcHTMLBody, tcSubject
+* Where:
+* tcFile = the file name that brings your report
+* tcFaxNumber = the fax number that your client will fill in the email field in the email form
+* tcHTMLBody = the text that your client wrote in the email form
+* tcSubject = the subject filled
+
+
+v2.99 - 2012-06-20
+-------------------------------------------
+- Included "lSilent" property in simplified mode
+- Fix in PDF listener, allowing images embedded in the EXE to be shown in the exported files
+- Fix in PDF and RTF listener, allowing merging reports using OBJECTTYPE 10 (Other types not available yet)
+- Included new PRG: "FOXYGETIMAGE.PRG". Include this file in your EXE project if you have images embedded in your EXE that you want to appear in your report. This may bring some security issues to your EXE, because this program will allow FoxyPreviewer to access the embedded images of your EXE.
+- Fixed Issue "Emailto, subject and file name settings do not update" http://foxypreviewer.codeplex.com/workitem/9362
+- Fix in ExcelListener: to allow flexible Currency and ()'s for Negative - by Rick Bean
+- Fix in Report exporting, when some objects were not respecting the original report position (front and back) http://foxypreviewer.codeplex.com/workitem/9276
+
+v2.98 - 2012-03-10
+-------------------------------------------
+- Fix in PDF listener, allowing images embedded in the EXE to be shown in the exported files
+- Fix in Excel Listener, now treating numbers starting with "0" with no points as strings
+- Updated the 'Traditional Chinese' and 'Italian' localization strings in the LOCS table
+- In the "Settings" dialog, included tooltips telling the related property used in the current field. The tooltips are visible only in development mode.
+- New properties:
+The following new properties are applicable only if the property 'nButtonSize = 2' (32x32 pixels) 
+• cImgPrintBig  - character, the FullPath of the 32x32 pixels image file to replace the image of the "Print" button in the preview toolbar. Applicable when the property 'nButtonSize = 2' && big buttons 
+• cImgPrintPrefBig  - character, the FullPath of the 32x32 pixels image file to replace the image of the "Printer Prompt" button in the preview toolbar. Applicable when the property 'nButtonSize = 2' && big buttons 
+• cImgSaveBig  - character, the FullPath of the 32x32 pixels image file to replace the image of the "Save" button in the preview toolbar. Applicable when the property 'nButtonSize = 2' && big buttons 
+• cImgCloseBig  - character, the FullPath of the 32x32 pixels image file to replace the image of the "Close" button in the preview toolbar. Applicable when the property 'nButtonSize = 2' && big buttons 
+• cImgClose2Big  - character, the FullPath of the 32x32 pixels image file to replace the image of the "Close" button in the preview toolbar. This 2nd image will be switched in the MouseOver event of the "Close"button. Applicable when the property 'nButtonSize = 2' && big buttons 
+• cImgEmailBig  - character, the FullPath of the 32x32 pixels image file to replace the image of the "Email" button in the preview toolbar. Applicable when the property 'nButtonSize = 2' && big buttons 
+• cImgSetupBig  - character, the FullPath of the 32x32 pixels image file to replace the image of the "Setup" button in the preview toolbar. Applicable when the property 'nButtonSize = 2' && big buttons 
+• cImgMiniaturesBig  - character, the FullPath of the 32x32 pixels image file to replace the image of the "Miniatures" button in the preview toolbar. Applicable when the property 'nButtonSize = 2' && big buttons 
+• cImgSearchBig  - character, the FullPath of the 32x32 pixels image file to replace the image of the "Search" button in the preview toolbar. Applicable when the property 'nButtonSize = 2' && big buttons 
+• cImgSearchAgainBig  - character, the FullPath of the 32x32 pixels image file to replace the image of the "Search Again" button in the preview toolbar. Applicable when the property 'nButtonSize = 2' && big buttons 
+• cImgSearchBackBig  - character, the FullPath of the 32x32 pixels image file to replace the image of the "Search Back" button in the preview toolbar. Applicable when the property 'nButtonSize = 2' && big buttons
+
+
+v2.97g - 2012-03-09
+-------------------------------------------
+Fix in "<TF>" and <FJ>, for fields that had the "Remove if blank" option
+Tweak in the main report listener, allowing reports created in FoxPro DOS, that did not have the USER field in the FRX
+
+
+v2.97f - 2012-03-08
+-------------------------------------------
+Fix XLS generation when the current Excel version can't open the XML file
+Fix in "<TF>", allowing empty strings... Continuation
+Fix in PDF, eliminating the open boxes
+
+
+v2.97d - 2012-03-06
+-------------------------------------------
+Fix in Email sending from preview, allowing exporting to XLS and emailing.
+Fix in "<TF>", allowing empty strings
+
+
+v2.97c - 2012-02-24
+-------------------------------------------
+Fix in <TF> Tagged formatting feature, in some situations it was rendering the last line wrong. Important to update if you need this feature.
+
+
+v2.97b - 2012-02-23
+-------------------------------------------
+Small tweak in the ProgressBar. In some situations it was maximizing the _Screen object when trying to force the PGBar dialog to front.
+
+
+v2.97a - 2012-02-22
+-------------------------------------------
+1 - Added Watermarks feature, working only in the "Simplified" mode. AVailable for DIrect printing, Previewing, and exporting to PDF from preview or using OBJECT TYPE 10. Still missing to introduce the feature in RTF and HTML. This feature will not be available in the "Complete" mode.
+    New properties in the "_Screen.oFoxyPreviewer" global object, related to watermarks:
+	nWatermarktype - Numeric, 1 = Colored, 2 = COnverted to grey scale
+	nWatermarktransparency - Numeric, from .10 to 1, the transparency level of the WM image; 1 = Opaque
+	nWaterMarkWidthRatio - Numeric, the width size in proportion of the watermark in the report page
+	nWaterMarkHeightRatio - Numeric, the height size in proportion of the watermark in the report page
+	cWatermarkimage - character, the name of the WM image. Important: this image MUST be stored locally, CAN'T be embedded in your EXE
+
+2 - Fix in "Traditional Chinese" language.
+3 - Included Traditional chinese in the language localizations table
+4 - Fix in ExcelListener, now forcing numbers with more than 15 positions to be treated as characters, due to Excel limitation. 
+5 - Fix in ExcelListener, closing some temp cursors.
+6 - Fix in Excel Listener, avoiding the switch of "SET DATE" during the ouytput generation.
+7 - Fix in Excel Listener, allowing some special russian characters.
+8 - Fix in the PDF Listener, forcing "lPDFEmbedFont" to be FALSE, to bypass a bug in the HPDF library that draws an open box when it finds a Carriage return in the text.
+9 - Fix in PDF engine for font assigning for non English languages in systems with Win2000 or WinXP
+10 - New property: "lShowPrintBtn" - logical, allows to individually include/exclude the "Print Report" button, so that you can use the Print Prefs button "instead of," rather than only "in addition to.". This is different from the property "lPrintVisible", that hides/shows all the printing related buttons. This new prop, deals only with the "Print" button.
+11 - New property: "lShowPageCount" - logical, shows / hides the option to change page count in the preview toolbar.
+12 - Fixed tooltips in the email sending form, for RIght and Center alignment.
+13 - Tweak in MAPI Email sending, now will open the Logon dialog box if there is no email account set. Included English error messages when something goes wrong during the process. This definitely will ease email sending!
+14 - Fix in "Dynamics" rendering. If returns a non logical value, FoxyPreviewer will treat it as false.
+15 - Fix in ProgressBar, now showing the value of the "cTitle" property instead of the FRX name in the title of the ProgressBar dialog
+
+
+
+v2.96a - 2012-02-01
+-------------------------------------------
+1 - Fix in 'lExpandFields', now allowing exporting the "***" values correctly in PDF, XLS, RTF
+2 - New Property: "lRepeatInPage" - logical, determines if the current contents will be printed twice in the same page. Useful for small reports, when you need to print the same report twice in the same page. Works only if called from the Preview, in simplified mode
+
+
+v2.95b- 2012-01-19
+-------------------------------------------
+1 - Fix in PDF rendering, avoiding some images to get erased
+2 - Introduced the property "cEmailPRG" in the Settings table
+
+
+v2.95 - 2012-01-17
+-------------------------------------------
+1 - Fix in Release mode, when using "DO FoxyPreviewer WITH "Release"
+2 - New properties, allowing more control over the Settings dialog
+		lShowLanguage, lShowTabGeneral, lShowTabControls, lShowTabOutput, lShowTabEmail,
+		lShowTabPDF, lShowTabXLS (by default, all are set to TRUE)
+	The usage is really very simple, but only allowed in simplified mode:
+    _Screen.oFoxyPreviewer.oSettingsDlg.lShowLanguage = .F. && hides the language combo
+    _Screen.oFoxyPreviewer.oSettingsDlg.lShowPDF      = .F. && hides the PDF page
+
+
+v2.94b - 2012-01-15
+-------------------------------------------
+1 - Fix in PDF generation for words that bypass the full width available for the field
+2 - Fix in <FJ> full justified feature in PDF 
+3 - Updates in the settings form to allow more space in labels for Dutch language (thanks to Koen Piller)
+
+
+v2.93e - 2012-01-13
+-------------------------------------------
+1 - Several tweaks for DoubleByte languages. 
+2 - Tweaks in the PDF Listener to allow DOuble bytes
+3 - Fix in the EXCEL Listener to allow DOuble bytes
+4 - Fix in the EXCEL Listener in Date formatting in OBJECT TYPE mode
+
+
+v2.93a - 2012-01-03
+-------------------------------------------
+1 - New OBJECT TYPE 15: Generates simplified HTML outputs. Good to be used in websites, no need of MSXML, faster rendering and Double-byte languages friendly
+2 - Tweak in Preview, enabling the save as button for Double-byte languages
+3 - Several tweaks in the ExcelListener to allow Double-byte languages 
+4 - Several tweaks in the RTFListener to allow Double-byte languages 
+
+
+v2.92a - 2011-12-30
+-------------------------------------------
+1 - New feature: Excel rendering now will create correct outputs for non Latin languages, even if you don't have the language installed in Windows
+2 - Fix in PDF rendering for Symbol fonts, like WingDings
+3 - Fix in PDF rendeirng when using OBJECT TYPE 10 in a sequence. Some fonts were not being rendered in PDF
+ 
+
+v2.91d - 2011-12-28
+-------------------------------------------
+1 - Introduced "Tagged formatting" new feature. If the report engine finds the tag "<TF>" in the user field, FoxyPreviewer will apply some basic formatting to the string. The allowed tags:
+*-- <b> </b>				:: bold
+*-- <i> </i>				:: italic
+*-- <u> </u>				:: underline
+*-- <s> </s>				:: strikethru
+*-- <color=rgb/ncolor> </color>	// <c=> </c>	:: forecolor
+*-- <highlight=rgb/ncolor> </highlight>	// <h=> </h>			:: backcolor
+*-- <fontname="name"> </fontname>		// <fname=> </fname>	:: font name
+*-- <fontsize=0> </fontsize>			// <fsize=> </fsize>	:: font size
+*-- <fontstyle="BIUS"> </fontstyle>		// <fstyle=> </ftyle>	:: font style string	// will alter <b><i><u><s> previous state
+
+*?-- color could be save as a number with RGB()
+*?-- could prevent transform if '</' not in string
+
+Check sample SAMPLE_TF.FRX to play with the new features
+
+Fix in Excel saving (by Koen Piller)
+Fix in Printer names (by Brian Abott)
+Fix in Excel for non Latin languages
+
+
+v2.89 - 2011-12-09
+-------------------------------------------
+1 - Fixed embedded in the APP the needed files from ReportOutput.app
+2 - Enhanced the progressbar in excel output, with new warning message when the file exceeds 65536 rows.
+3 - New property: "nExcelSaveFOrmat" - integer, the Excel automation constant that defines the type of output to be applied when converting to Excel. See list of possible values at http://fox.wikis.com/wc.dll?Wiki~ExcelConstants. The default value is 43 (xlExcel9795) 
+
+
+v2.88 - 2011-12-06
+-------------------------------------------
+1 - Embedded in the APP the needed files from ReportOutput and ReportPreview.App
+This can bring some benefits, like:
+- No more need to distribute ReportPreview.App and ReportOutput.App
+- Easy debugging, because all the needed files are in the same module (with debuginfo)
+- No more need to deal with nonupdated systems. Lots of users reported issues, but the source was the report*.App wrong (old) files
+- Ensure the FoxyPreviewer initialization will be done using the correct procedures
+This change meant only 200kb in the APP, and will solve the issue that lots of people had, with wrong Report*.app files in their clients.
+After this become stable, and tested by a considerable quantity of users, I'll publish a separate version of the APP, without the DebugInfo, to make it 50% smaller.
+2 - Renamed the listeners from ReportListener.vcx in order to avoid confusions if working with other tools
+3 - Fix in PDFAsImage, property error with "lReplaceFonts"
+4 - Fix in Excel conversion from XML, was holding an existing process, even when the Excel object was closed in VFP
+
+**** PLEASE TEST !!! ****
+
+
+v2.87 - 2011-11-28
+-------------------------------------------
+1 - Font replacement in PDF generation will not be applied to languages that use Codepage different from 1252
+2 - Updated localizations: Czech, French, German, Indonesian, Bulgarian, Dutch, Swahili
+
+
+v2.86 - 2011-11-27
+-------------------------------------------
+1 - Fix in PDF and RTF engines in OBJECT TYPE mode
+2 - New properties:
+    .lExcelAlignLeft - logical, for Excel spreadsheets, Aligns to the left all the string fields
+    .lSaveAsMHT - logical, determines if the Save as MHTML button will be visible in the preview toolbar 
+
+
+v2.85 - 2011-11-22
+-------------------------------------------
+1 - Fix in PDF engine for shapes that start from the band header and finish in footer
+2 - New property: lPDFReplaceFonts, logical, determines if the PDF engine will replace some basic fonts that are already embedded in any PDF document. Recommended for people using codepage different from 1252 (latin). Default = .T.
+
+
+v2.84 - 2011-11-15
+-------------------------------------------
+1 - Fix in Excel number detection (again in 2.84c)
+2 - Fix in PDF generation using OBJECT TYPE 10 for reports that use the 'style' field or special features of SP2 reporting
+3 - New property - "cToolbarTitle", character, determines the title of the report toolbar
+
+
+v2.83 - 2011-11-04
+-------------------------------------------
+1 - Fix in Excel Listener, some characters were detected as numbers
+2 - Fix in CDOSYS email sending. Emails were being sent, but FOxy was telling they did not
+3 - An alternative MAPI email option was introduced
+
+
+v2.82 - 2011-10-28
+-------------------------------------------
+1 - Updates in HTML rendering: Fix for images with Isometric resizement, Fix for shapes backcolors
+2 - Updates in RTF rendering: Fix for shapes backcolors
+3 - Fix in PDF output for images using "Clip" setting
+4 - Fix in PDF output for font settings in Russian
+5 - Updated FoxyPreviewerCaller.prg to usethe new properties
+6 - New properties will be automatically added to the current Settings table, with the correct default values
+
+
+v2.81 - 2011-10-23
+-------------------------------------------
+1 - Several updates in XML Listener. Since the worksheets are just one page, some new properties were introduced, allowing you to ommit unneeded Page Headers, Footers and Page numbers.
+
+	New properties:
+	•cExcelDefaultExtension - Character, default "XLS", the default file extension shown in the PUTFILE() dialog to save as worksheet. Fill it with "XML" if you don't have MS-EXCEL, OPENOFFICE or LIBREOFFICE installed.
+	•lExcelConvertToXLS  - Logical, default .T., offers a new option to convert the worksheet to 'Excel 95' format. (requires MS Excel or OpenOffice installed)     
+	•lExcelRepeatHeaders - Logical, default .F., Repeat report page headers in worksheet.
+	•lExcelRepeatFooters - Logical, default .F., Repeat report page footers in worksheet                
+	•lExcelHidePageNo    - Logical, default .F., Hides report fields that contain "_PAGENO" information
+
+2 - Users can update all the above properties directly in the Settings dialog, in the new tab "XLS"
+3 - You can disable the "XLS" tab in the settings dialog this way, only in simplified mode, using the new property "":
+	_Screen.oFoxyPreviewer.oSettingsDlg.lEnableTabXLS = .F.
+4 - New "About" tab introduced in the Preferences dialog, brings some helpful information about the current version and provides links for the documentation. This tab is shown only in development mode.
+
+
+v2.80 - 2011-10-17
+-------------------------------------------
+1 - Updates in XML Listener to make it compatible with LibreOffice
+2 - Converts the XML output to pure XLS using Excel or OO Automation
+
+
+v2.79 - 2011-10-10
+-------------------------------------------
+1 - Added mDots to make the code safer
+
+
+v2.78 - 2011-10-06 - Updates by Jacques Parent (Canada)
+-------------------------------------------
+1 - Fix in SendReportToEmail for people who use a customized procedure
+2 - Fix in Automatically sending by email after user saved the current report during the same preview session
+3 - Fix in the initialization, encapsulating the CPZERO procedure, protecting the current environment
+4 - The message "Email was sent" will appear only if ".lSilent = .F."
+5 - Updated the French localizations table 
+
+
+v2.77 - 2011-10-03
+-------------------------------------------
+1 - Included the directly printed reports in FoxyPreviewer mode, allowing you to dircte print your reports using the <FJ> tag. In the future, watermarks will be available as well
+2 - Fixed some variable names, such as "n", "i", "j", "k", that now are using the mDOt convention to allow users to have these names as fields
+
+
+v2.75c - 2011-09-21
+-------------------------------------------
+1 - Updates in the Releasing procedures
+2 - Included new verifications in PDFListener to make sure the LIBHPDF.DLL is at the disk. (for those who included the sources in their projects)
+
+
+v2.74 - 2011-09-13
+-------------------------------------------
+1 - Updates in the preview window. Now title will show "Page ... of ..." at the 1st page
+2 - Enhanced the error message routine, that will provide some more detailed info
+3 - Removed the bypass for the "Error loading printer driver" in complete mode
+4 - New property - cExcelDefaultExtension - character, fill it with "XML" if you want this extension to be used in Excel outputs. Ideal for OpenOffice Calc users.
+
+
+v2.73a - 2011-09-12
+-------------------------------------------
+1 - Updates in HTML Listener by Jacques Parent
+2 - Enabled HTML output in context menu in Simplified mode
+3 - Enhancements in releasing Foxypreviewer using DO FOXYPREVIEWER WITH "RELEASE"
+4 - REPORT FORM .... NOWAIT is now available in FoxyPreviewer, but will show only ONE report at a time
+5 - Now Images in General fields can be retrieved in reports that use the "RANGE" clause
+6 - Fix: Fields that use rotation are now available again
+7 - Enhancement: If the detsination form is "Desktop", now the Preview toolbar will be visible, with all the helper forms. Thanks to Onytoo and Yousfi Benameur
+8 - Fix: If a computer does not have the capability to use the HTMLListener (eg. not having MSXML4 installed), Object type 14 will be ignored.
+
+
+v2.72b - 2011-09-07
+-------------------------------------------
+1 - Fixed language assignment in simplified mode
+2 - Fixed FoxyPreviewer with "Release" in simplified mode
+3 - Included additional properties in the simplified mode that were in the complete mode 
+4 - Fixed some translations in the Dutch and Portuguese languages
+
+
+v2.71 - 2011-09-04
+-------------------------------------------
+1 - Introduced a new OBJECT TYPE # 14, for HTML Outputs
+2 - Applied fix for RTF and XLS Listeners for ObjetType mode
+
+
+v2.70 - 2011-09-03
+-------------------------------------------
+1 - Fixed Big buttons error when lPrintVisible = .F.
+2 - Fixed the location where the Settings table will be saved by default - the same folder of FoxyPreviewer.App
+3 - In simplified mode, the settings defined in _Screen.oFoxyPreviewer can't be changed even in the Preferences form
+
+
+v2.69 - 2011-09-02
+-------------------------------------------
+1 - Fixed Error "1958 - Error loading printer driver", that appeared when using SP1, after printing
+
+
+v2.68b - 2011-08-30
+-------------------------------------------
+1 - Added new parameter to the main initialization. Now you can determine the Path where Foxypreviewer will store the UserSettings table and the LibHPDF.DLL ( responsible for the PDF rendering). Only make sure to have that folder available. It is a responsibility of your application to create that folder.
+
+ 
+v2.68 - 2011-08-29
+-------------------------------------------
+1 - Updated the Simplified mode, to allow configuring previously the email options for CDOSYS
+2 - New sample, showing the new options: Test_Simplified_ConfigureEmail.PRG
+3 - Fix for the Window type for the ProgressBar form
+
+
+v2.67 - 2011-08-29
+-------------------------------------------
+1 - Changed the way the initialization is done, now users can make a call to "DO FOXYPREVIEWER" from a Private DataSession form, not losing anymore Grid, Combos, or listboxes RowSources.
+2 - Fixes in the Releasing of Foxypreviewer. From now on, after you DO FOXYPREVIEWER with "Release" the Preview container should be released. Please test this in your environments.
+3 - The language settings now respects the definition from the Settings table
+4 - Fix in <B>ExcelListener</B>, now all row heights will be configured automatically
+5 - Other small tweaks
+ 
+
+v2.65 - 2011-08-22
+-------------------------------------------
+1 - Reports with OBJECT TYPE 10 (PDF) received an important fix, before users had to unload FoxyPreviewer and reload it again before making any PDF. Now this was fixed, and just a single initializing of FoxyPreviewer will work.
+2 - Fix in ExcelListener, allowing russian special characters, thanks to "aMaximum", from the Russian community
+3 - Fix in "PDF as Image" in Complete mode
+4 - Implemented the Thermometer progressbar for the generation of PDFs, CLS, RTF and HTML in the simplified mode. Originally it was present only at the first report run. Now we have the PGBAR during the generation of the output to be saved.
+5 - Reverted a modification to try to fix the "Grid losing the datasource" issue reported by Eddy, Kevin and Khurram. Needs to be tested, since I could not reproduce the issue by myself.
+6 - Enhancements in printing in Simplified mode, now we can get some specific printer and paper iformation to print correctly. Before some reports in customized paper sizes were being expanded to the whol paper size during printing.
+7 - The progressbar now is shown in a TopLevel form during email sending via CDOSYS (by Jacques Parent)
+8 - Fixes in the RTF and HTML Listeners for generating bordered boxes that start before the current band data correctly (by Jacques Parent)
+9 - Updated the FOXYPREVIEWERCALLER.PRG to allow all the new properties introduced during the last 2 months.
+10 - Updated the PDF engine to TRY to generate the Simplified Chinese characters corectly. NEEDS TESTS
+11 - And many other small tweaks and enhancements.
+
+
+v2.54 - 2011-07-15
+-------------------------------------------
+1 - New property: "lExpandFields" - logical, makes the report not to show the "***" for numeric values. Since it makes the report running a little bit slower, by default it will continue with the original behavior. You have to set it manualy if you need it.
+2 - New fixes in XML outputs. Now hopefully ALL reports can be converted to XLS!. The last fix was for dates with DATE ANSI that would not show correctly.
+3 - Intellisense fully available for the simplified mode, using the _Screen.oFoxyPreviewer object
+4 - _MemberData updated for the _Screen.oFoxyPreviewer properties. Now all of them show in the correct captions.
+5 - Now you can determine which TABs in the settings PageFrame will be enabled, and even most of the controls can be predetermined. This provides a way for you to have full user control of what people can change in FoxyPreviewer.
+6 - The spinner for "Quantity of copies" now appears in the "Simplified mode as well".
+7 - New object types tested and enabled, #10 for PDF, #11 = PDF as Image, #12 = RTF, #13 = XLS
+and finally, another thing that most people always ask:
+8 - HTML outputs enabled in the simplified mode
+This is completely new. All codes are in pure HTML and CSS Styles. 
+Images and Boxes (shapes) are not yet allowed, but the texts, lines, fore colors, backcolors, alignments, fonts, font styles are working. I hope to complete the HTML class soon, and probably it is possible that I will decide to use only this new class for the Complete mode. 
+In the "Complete" - aka old mode, I'm still using the HTML Listener from VFP9 that creates the HTML "XSLT" that I don't have any experience dealing with. It is really super complicated to adapt the original HTML class from VFP9 to the simplified mode.
+
+
+v2.38 - 2011-04-19
+-------------------------------------------
+To export a report to PDF without previewing, people just need to do the following:
+DO FOXYPREVIEWER.APP
+REPORT FORM YourReport OBJECT TYPE 10
+
+The reporting system from VFP9 allows me to access some of the report clauses used in the REPORT FORM command. So now we can use the OBJECT TYPE clause of the REPORT FORM command much better, using the "TO FILE" and the "PREVIEW", see:
+
+DO FoxyPreviewer.App
+REPORT FORM (_Samples + "\Solution\Reports\Wrapping.frx") ;
+	OBJECT TYPE 10 ;  && Regular PDF
+	TO FILE ("c:\FoxyNewTest.Pdf") ; && Destination file
+	PREVIEW && Open the default PDF viewer
+
+TO FILE - is the destination file, that can be sent directly in the report form command !
+PREVIEW - Opens the default file viewer, eg ADOBE READER for PDFs
+
+So, in Summary, I've enabled 2 OBJECT TYPE's allowing automatic PDF generation, without previewing, with just one single line of code, just the same way we used to run our reports!
+
+OBJECT TYPE # 10 = Regular PDF
+OBJECT TYPE # 11 = PDF as Image
+OBJECT TYPE # 12 = RTF as Image && To be implemented
+OBJECT TYPE # 13 = XLS (or XML) && To be implemented
+
+A very cool part of all this is that now we have even a new option for report previsualization, trasforming our reports in PDF, and using ADOBE READER to preview them !
+That's really neat ! Because the Reader brings some very nice options for printing, Text searching, hyperlinks, Emailing, saving, etc etc etc...
+
+If you want to customize your PDFs using the new OBJECT TYPE clause, of course you can ! Just use the following properties available in the _Screen.oFoxyPreviewer object:
+
+WITH _Screen.oFoxyPreviewer 
+    .lQuietMode 
+    .lPDFEmbedFonts 
+    .lPDFCanPrint 
+    .lPDFCanEdit 
+    .lPDFCanCopy 
+    .lPDFCanAddNotes 
+    .lPDFEncryptDocument 
+    .cPDFMasterPassword 
+    .cPDFUserPassword 
+    .lPDFShowErrors 
+    .cPDFSymbolFontsList 
+    .cPdfAuthor 
+    .cPdfTitle 
+    .cPdfSubject 
+    .cPdfKeyWords 
+    .cPdfCreator 
+    .cPDFDefaultFont 
+    .lOpenViewer 
+    .nPDFPageMode 
+
+These properties are all described in the FoxyPreviewer documentation.
+Of course this needs some tests, I'm waiting for the feedback of people interested in that feature.
+
+The recommended mode - MAKE IT SIMPLE !!!
+From now on, I'm recommending people to use only the simplified mode:
+
+DO FOXYPREVIEWER.APP
+
+REPORT FORM YourReport PREVIEW
+
+That's all you need to have 99% of the FoxyPreviewer features available! I hope to bring all the functionalities to the simplified mode in the next days. Of course, you can still make all the customizations from the Complete (now called "Complicated") mode, using the _Screen.oFoxyPreviewer object, that becomes available after you initialize Foxypreviewer with a "DO FOXYPREVIEWER.APP"
+
+Some of the main Improvements / fixes
+
+- Improved the fonts substitution in the PDF rendering. The fonts Arial and Courier New will appear well, using some internal fonts from the PDF engine.
+WingDings was enabled too!
+- Fix in PDF "stretch to fit" and multilines sentences - Thanks to Fabio Vieira
+- Fix sending emails, automatic opening tables
+- From now on, whatever that the PDF engine will not be able to draw, it will get an image from the source report surface, crop and paste the image in the PDF document. This works nice for barcodes, and some fonts that can't be embedded.
+- Included ALL of the available properties for the Complete mode to the "_Screen.oFoxyPreviewer" object (that is created after you "DO FOXYPREVIEWER.APP"
+- Several small fixes in the XLS rendering, hopefully now all reports will generate valid worksheets. (Special thanks to Jorge Chang for his samples and testing)
+
+Also:
+- Using the simplified mode now you can change your printer directly from the combobox, Thanks to Lisa Slater Nicholls, for her great article "A print job to call your own"
+
+Special Thanks
+
+- To all the translators who have been translating the localizations table, alowing the tool to be multilanguage. Currently we have 16 languages available!
+
+- Soykan Ozcelik and Luis Maria Guayan, for their terrific support, tests and help, and more than that, for translating the FoxyPreviewer documentation to Turkish and Spanish, allowing more people to use the tool, and for providing a very positive and constant support in their local VFP forums. Currently we have all dialogs, tooltips and captions available in:
+
+ENGLISH 
+PORTUGUESE 
+CZECH 
+SPANISH 
+DUTCH 
+TURKISH 
+FRENCH 
+GERMAN 
+INDONESIAN 
+ARABIC 
+GREEK 
+ITALIAN 
+PERSIAN 
+POLISH 
+RUSSIAN 
+SWAHILI
+- And thanks to all people who have been testing this product very deeply.
+That's SUPER IMPORTANT, because this utility is getting really big, with lots of possibilities of usage, and for me it's impossible to test in all environments.
+
+
+Documentation
+
+As said above, the documentation has been updated, and also translated to Turkish and spanish:
+
+English documentation
+Turkish documentation / Türkçe Dökümantasyon
+Spanish documentation / Documentacion en Español
+
+
+The FoxyPreviewer.APP file size
+
+- Notice that the file FoxyPreviewer.App has become bigger, about 3MB. That is because I added the "Debug info" information to the APP.
+That makes the file bigger, but on the other hand, provides a more detailed debugging information. That way, people will be able to tell me the line that originated the bug, even running FoxyPreviewer in production. 
+That will be only for now, during the tests. In the future, after I stop making constant changes, I'll remove that, and the APPs will come back to the original and compact size, about 1.5 Mb
+And of course, you can recompile the APP using the sources, removing the DebugInfo if you want!
+
+
+
+
+
+
+
+
+Version 2.18 -  2011-03-01
+-------------------------------------------
+?Improved the adressbook feature, now working with the simplified mode, and also with tables stored in the disk
+?RTF and PDF outputs now render images stored in General fields
+?Improved PDF Listener in Simplified mode, allowing to print more types of texts, now we're about 99% of the possibilities.
+?Improved the Excel Listener, now values that begin with a "0" are rendered as strings, not values as aoriginal
+
+
+Version 2.15 -  2011-02-10
+-------------------------------------------
+?Introduced new adress book form allowing users to select presaved emails (Thanks to Soykan Ozcelik, for the idea, and first development)
+   - Thanks also to Paul Mrozowsky for his Grid reorder class
+?Updated the localizations table
+
+
+Version 2.12 -  2011-01-30
+-------------------------------------------
+?Several fixes in ExcelListener: FOnt formatting, Background and foreground colors, Lines skipping incorrectly
+
+
+Version 2.11 -  2011-01-07
+-------------------------------------------
+?Updated the localizations table, please update "FoxyPreviewer_locs.dbf" and send me your version !
+OPENVIEWER - Open default viewer
+EMBEDFONTS - Embed fonts
+CANPRINT   - Allow printing
+CANEDIT    - Allow edit
+CANCOPY    - Allow copy
+CANADDNOTE - Allow add notes
+ENCRYPTDOC - Encrypt document
+MASTERPWD  - Master password
+USERPWD    - User password
+PAGEMODE   - Page mode
+PDFOPTIONS - PDF options
+NORMALVIEW - Normal view
+OUTLINPANE - Show the outlines pane
+THUMBSPANE - Show the thumbnails pane
+PDFAUTHOR  - PDF Author
+PDFTITLE   - PDF Title
+SYMBBARCOD - Symbol or bar codes fonts list
+MASTANDUSR - Master and User passwords must be different!
+
+BADSMTP    - Invalid SMTP email configurations
+CONTINUE   - Continue anyway?
+BADSETUP   - Setup inconsistency
+
+?PDF:
+- Fixed font embedding
+- Convert to image texts that cant be converted or embedded (symbol or barcode fonts)
+- Introduced partial error handling in PDFx
+- Embed fonts in PDFx (or convert some texts to images, for the fonts determined in property cPDFEmbedFonts
+
+
+?New properties:
+	* PDF properties
+	lPDFEmbedFonts      = .F.
+	lPDFCanPrint        = .T.
+	lPDFCanEdit         = .T.
+	lPDFCanCopy         = .T.
+	lPDFCanAddNotes     = .T.
+	lPDFEncryptDocument = .F.
+	cPDFMasterPassword  = ""
+	cPDFUserPassword    = ""
+	lOpenViewer         = .F.
+	nPDFPageMode        = 1 && Default = 1, 1 = Normal view, 2 = Show the outlines pane, 3 = Show the thumbnails pane
+	cPdfAuthor
+	cPdfTitle
+	cPdfSubject
+	cPdfKeyWords
+	cPdfCreator
+	lPDFShowErrors
+	cPDFSymbolFontsList - list of fonts that the PDF engine will convert to image. Usually symbolic and barcode fonts. pass the font names separated with a Comma. This is the internal list of fonts that will automatically converted to images:
+
+?Errors:
+SET UDFPARMS TO VALUE = OK
+cDefaultListener = Ignore
+
+_VFP.AutoYield = .T. && Specifies whether an instance of Visual FoxPro processes pending Windows events between execution of each line of user program code.
+SYS(2333,1) && Enables ActiveX dual interface
+
+?Properties that can be set directly in the ordinary mode, using the "_Screen.oFoxyPreviewer" object (their behavior is exactly the same as in the enhanced mode, these can be set using the settings form as well):
+cSuccessor
+lQuietMode
+lShowSearch
+lShowSetup
+nThermType
+lOpenViewer
+
+?Fix in EMail form - BackGround color now works with the selected text
+?Fix in XLS generation, now all lines, shapes and images will be ignored
+
+
+Version 2.01 -  2010-12-05
+-------------------------------------------
+?Important fix for PDF outputs by Jacques Parent
+?Updated the languages table, introduced RUSSIAN and SWAHILI
+?Updated the new email form with missing translations
+?Email form allows removing attachments
+?New property: cEmailBodyFile
+      there we will save the "file path" of an HTML file...
+      So when the user opens the "pr_sendmail2.scx" the "EmailBody" by default will displays the content of this HTML file
+Also we can add and a new button with a caption "This body to be the default" if the user likes to change this, with another one!
+
+
+Version 2.00 -  2010-11-22
+-------------------------------------------
+?Important fix for PDF outputs
+?New Form for sending emails, based on an enhanced version of the VFP HTML editor from Frederic Steczicky, published originally at atoutfox.org
+    The new the email form allows you to:
+    - Generate HTML outputs for the body of your message 
+    - Change the formatting, alignments, fonts, adding pictures, hyperlinks, etc... 
+    - Preload an HTML 
+    - Attach more files
+    - Mark message as Priority 
+    - Ask for read receipt
+    Another cool thing is that after you click on "send", a Continuous progress bar, with the cool Marquee effect 
+    (thanks to Carlos Alloatti) will appear, till the message is delivered:
+
+?The old Email form, that could generate only plain text messages is still there, you may select it in the settings form.
+?Full justified strings available, just add the tag "<FJ>" to the User field of the report 
+?Improved simplified usage: 
+    DO FOXYPREVIEWER.APP 
+    REPORT FORM YourReport PREVIEW  
+  will bring you the most important features of foxypreviewer, including the exporting to PDF, RTF and XLS
+  
+?To reset the report factory to the original settings:
+    DO FOXYPREVIEWER.APP WITH "Release"
+
+
+Version 1.98 -  2010-10-06
+-------------------------------------------
+•Improvement - Ordinary reports now can export the outputs to PDF, RTF and XLS, apart from Images. 
+   These output types are supported also for emails.
+•Updated localizations table
+•Improved Global initialization
+
+
+Version 1.96e -  2010-09-29
+-------------------------------------------
+•Improvement - Updated localizations table to work with the new progressbar
+•Fix: Missing string was included
+
+
+Version 1.96d -  2010-09-28
+-------------------------------------------
+•Improvement - RTF Listener now supports Full justified texts
+•Fix: Search buttons were not at the correct size when selected 32x32 buttons
+
+
+Version 1.96b -  2010-09-27
+-------------------------------------------
+•New progressbar included in PDF, RTF, HTML and XLS listeners
+•Fix: PrintJob name fixed with the current report name
+•Fix: PDFx now generates satisfactory transparent images (Jacques Parent)
+•Fix: PDF output now respects the cOutputPath property (Jacques Parent)
+
+
+Version 1.96a -  2010-09-25
+-------------------------------------------
+•Full justify feature enabled for all kinds of reports.
+   How to use it:
+   1 - Select the desired field
+   2 - Right click, select the "Properties" menu
+   3 - Select the "Other" tab
+   4 - Click "Edit user data..." 
+   5 - Include the tag <FJ> in the editbox, click ok
+   6 - Run your report 
+
+•Enhancement: Replacement of the progressbar using CTL32 (adapted code from DOrin Vasilescu)
+   - New Property: "nThermType" - Numeric, 1 = Default therm (fxTherm); 2 = Enhanced therm (FoxyTherm)
+                    The enhanced progressbar is the windows default progressbar, thanks to the CTL32_Progressbar class from Carlos Alloatti (www.ctl32.com.ar)
+                    The implemetation is based in Dorin Vasilescu's new ReportOutput.App
+
+•Enhancement: Now you can specify the limit of pages to be "searchable" in your reports. Users will notice a big difference of performance in big reports,
+              because internally FoxyPreviewer will be storing information for every single object from the report. So, the bigger the report, the slower 
+              this process will be. So, now you have a new property to allow your users to configure manually this situation.
+   - New Property: "nSearchPages" - Numeric, determines the quantity of pages that will be scanned during Searches in previews. Default = -1 (all pages)
+
+•Enhancement: The "Setup" form now can be called independently, from your own application, in order to update report settings. Some people don't want to allow
+              every user to change the configurations, so now you can copy the "PR_Settings.SCX" to your project and call it directly. In the next release,
+              this form will be available as an embedded class in FoxyPreviewer.App, so that you'll be able to access it directly, using "NEWOBJECT()"
+              All new properties have been included in the Settings form.
+              The current version number and timestamp will be available at the lower left of this dialog.
+
+•Enhancement: New improvements in the international support (Nick Porfyris)
+
+•Updated the localizations table, including some new strings. There are still missing some strings, this time for the new ProgressBar dialogs.
+
+•New Property: "nVersion" - Numeric, the value for the current version
+•New Property: "cVersion" - Character, detailed information about the current version
+•Fix in Excel Listener, now supporting latin values ans ANSI dates
+•LOTS of tweaks and small fixes
+
+
+Version 1.94 -  2010-09-20
+-------------------------------------------
+•Several small tweaks, to avoid some errors, when a dialog was closed
+
+
+Version 1.93 -  2010-09-19
+-------------------------------------------
+•Updated the localizations table, for the Greek, French and Turkish languages
+•New updates to the PDFx Listener (Parent)
+•New updates to the ExcelListener allowing non default Set POINT and SEPARATOR options (Jaketon)
+•Fix in "lDirectPrint" property
+•New Property: cSaveDefName && Character, lets me specify the file name for the SAVE AS instead of taking the report name. (by Jacques Parent)
+•Fix in FoxyPreviewerCaller.Prg - by default it will clear the printer specific settings, except ORIENTATION and PAPERSIZE
+•cDefaultListener property now will pass a successor listener to be used
+•Introduced the new Global object to control certain behaviors in the default report toolbar behavior:
+   When you "DO FOXYPREVIEWER.APP", it will add a new property to the _Screen object, with the following properties:
+   _Screen.oFoxyPreviewer.lQuietMode && Logical, determines if QuietMode will be used, omitting the ProgressBar during report generation
+   _Screen.oFoxyPreviewer.cSuccessor && Character, the name of the Successor Listener class to be used in all reports
+   _Screen.oFoxyPreviewer.lShowSetup && Logical, determines if the Settings button will be shown in the toolbar
+   _Screen.oFoxyPreviewer.lShowSearch   && Logical, determines if the Search button will be shown in the toolbar
+
+
+Version 1.92 -  2010-09-14
+-------------------------------------------
+•Updated the localizations table
+•Improved search buttons are now inside a container in the toolbar, to force them to be side by side
+•New Property: nPrinterProptype - Numeric, determines the type of Printer option dialog that will be fired.
+        1 - The original "PRINTER PROMPT" report dialog
+        2 - The Current printer preferences dialog.
+    Some users complained that the dialog #1, although very complete, was not behaving as desired, because clicking the "cancel" button
+    was closing the preview. The Option #2 was revived to solve this. It will show you only the current printer settings dialog. If you 
+    click "Cancel" there the Preview will come back to the scene.
+•Updated FoxyPreviewerCaller.prg
+•Updated the settings form with a new control for the new property above
+•Updated partially the turkish localization table (Ozcelik)
+•Renamed the public variable "goHelper" to "_goHelper" (Krivka)
+•Updated PDFx Listener (Parent)
+
+
+Version 1.91 -  2010-09-12
+-------------------------------------------
+•Updated the localizations table
+•Improved search engine, included the "search backwards" feature
+•Improved Report factory initialization. From now on, to change the appearance of all your reports all you have to do is:
+     DO LOCFILE("FOXYPREVIEWER.APP")
+•Default reports using the new factory now allow searching texts and sending emails with image attachments
+
+
+Version 1.89 -  2010-09-08
+-------------------------------------------
+•Improved search engine, updated strings localization table
+
+
+Version 1.85 -  2010-09-04
+-------------------------------------------
+•Improved search engine, many fixes, new customized search form
+
+
+Version 1.83 -  2010-09-01
+-------------------------------------------
+•New property: lShowSearch  && logical, determines if the Search buttons will be visible
+
+
+Version 1.81 -  2010-08-28
+-------------------------------------------
+•Fix in ReportPreview initialization
+•Several internal tweaks, with small gain of performance
+
+
+Version 1.80 -  2010-08-26
+-------------------------------------------
+•New exporting options: TXT, CSV and XL5
+•New CDO email options
+
+•New Properties / improvements
+* by Mauricio Braga
+ - lSaveAsTXT    - logical, allows saving to TXT, CSV or XL5
+ - cOutputPath   - character, determines the output path the user wants the reports to be saved
+
+* by Jacques Parent
+ - lAutoSendMail - logical, allows to directly send e-mail with no preview display
+ - lDirectPrint  - logical, directly send to printer with no preview display
+ - lSilent       - logical, makes FoxyPreviewer completely silent for report errors
+ - cError        - character, the errors occurred
+ - cEmailCC, cEmailBCC, cEmailReplyTo - character, for the CDO email type
+
+ - In CDO email type: Included the auto detection of HTML body or TEXT body (if text begins with <HTML>)
+ - In CDO email type: Included the auto detection for the anonymous connection to the e-mail server (No user and password)
+
+
+Version 1.77 -  2010-08-09
+-------------------------------------------
+•Updated Greek localization table
+•Fix: Settings form translation was failing in some situations
+•Fix: ExcelListener was generating wrong numeric values if SET("POINT")=","
+
+
+Version 1.75 -  2010-07-28
+-------------------------------------------
+•Updated the Localizations table with the French, Persian, Greek - Thanks to Michel Levy, Ali Hosein Zadeh, Nick Porfyris
+•Improvement: Included CodePage in LOCS table to automatically create PDFS according to the local language - by Nick Porfyris.
+•Improvement in class initialization.
+•New "LocalLanguage" field, storing the local name used for the language
+
+
+Version 1.73 -  2010-07-27
+-------------------------------------------
+•Updated the Localizations table with the Spanish, Czech, Turkish and Arabic translations, Juan Antonio Santana and RIck Castro, MArtin Krivka, Soykan Ozcelik and Dany Eid
+•Fix: FoxyPreviewerCaller.Prg adapted to work with the new settings possibilities
+
+
+Version 1.72 -  2010-07-26
+-------------------------------------------
+•Updated the Localizations table with the German and Indonesian translations, thanks to Stefan Wuebbe and Samir H.
+•Fix: the toolbar will be disabled when the Settings form will be called
+•Fix: fix in the language assignment and initialization
+
+
+Version 1.71 -  2010-07-24
+-------------------------------------------
+•Updated the Localizations table in order to update the new settings form
+•New property: nButtonSize - Numeric, 1 = Small - 16x16 pixels (default), 2 = Big - 32x32 pixels
+
+
+Version 1.70 -  2010-07-22
+-------------------------------------------
+•Several improvements on the settings form
+•New downloads page at CodePlex
+
+
+Version 1.61 -  2010-07-20
+-------------------------------------------
+•Fix: RTF and PDF Listeners now work with basic rounded shapes
+•Fix: FoxyPreviewerCaller.Prg cleanup improved, now PAPERSIZE and ORIENTATION are kept when the EXPRE cleanup is done (Thnaks to Nick Porfyris)
+
+
+Version 1.60 -  2010-07-19
+-------------------------------------------
+•Fix: ExcelListener was raising an error when the report used the _PAGETOTAL variable
+•Fix: When the Miniatures form was minimized the miniaturesdid not show 
+•Renamed property: Old name: PDFnPageMode; New name: nPDFPageMode
+
+•New Property: "lShowPrinters" - Logical, determines if the available printers combo will be shown
+•New Property: "nShowToolbar"  - Numeric, determines the visibility of the toolbar
+	&& 1 = Visible (default), 2 = Invisible, 3 = Use resource
+•New Property: "lShowSetup" - Logical, determines if the FoxyPreviewer setup button will be shown
+•New Property: "nMaxMiniatureDisplay" - Numeric, the number of miniature to display in the miniature form
+•New Property: "nShowToolBar" - numeric, determines if the toolbar will be visible or not at startup
+               && 1 = Visible (default), 2 = Invisible, 3 = Use resource
+•New Property: "lShowSetup" - logical, determines if the setup button will be shown
+•New Property: "lShowPrinters" - logical, determines if the available printers combo will be shown
+
+•Other New Properties: for Email sending using CDOSYS
+	nEmailMode          && 1 = MAPI, 2 = CDOSYS, 3 = Custom procedure
+	cSMTPServer   
+	nSMTPPort     
+	lSMTPUseSSL   
+	cSMTPUserName 
+	cSMTPPassword  
+	cEmailTo      
+	cEmailSubject 
+	cEmailBody    
+	cEmailFrom
+
+•New dialog forms:
+       "Settings", allow user to define most of the available settings for the current and next session of Foxypreviewer
+       "Send Email" Form allowing user to pass email information
+
+•When the user chooses to save as "XLS", it will allow saving using the XML extension, because the output file will be able to be opened by other tools, such as OpenOffice.
+•Tweaks in the sample distribution project, to adapt it to the new changes.
+
+
+Version 1.53 -  2010-07-09
+-------------------------------------------
+•Several tweaks in translations
+•GoToPage form translations activated
+•Removed the exibition of the FRX nme if using the cTitle property
+•Changed all buttons to use the property SpecialEffect = 2, in order to keep the same appearance of the original report toolbar
+•Updated samples, using translated versions
+
+
+Version 1.52 -  2010-07-08
+-------------------------------------------
+•Several small fixes in Report title (was showing "TMP_") and FoxyPreviewerCaller.prg
+
+
+Version 1.51 -  2010-07-07
+-------------------------------------------
+•New Property: "cLanguage" - Character, the language, may be one of the following: 
+   English (default), PORTUGUES, ESPANIOL, GERMAN, TURKISH, ITALIANO, CZECH, PERSIAN, GREEK, FRENCH, POLISH, INDONESIAN
+   Notice that I removed all the translations from FoxyPreviewer.H
+   There I only kept information about the default language to be selected. This is to be used if you use FoxyPreviewer to set the global variable "_REPORTPREVIEW"
+
+
+Version 1.49 -  2010-06-30
+-------------------------------------------
+•Improvement: Included the "PrinterPreferences" button to the Default Preview Toolbar, the one used without calling FoxyPreviewer.
+•New translations, Polish and Indonesian, thanks to Kazimierz Pszenny and Samir H.
+•Improvement: Allows using bigger icons, such as 32x32
+•Replaced original icons due to some doubts about licensing, now using icons from www.pixel-mixer.com, that are free to use for commercial use.
+•New definitions in FoxyPreviewer.H allow you to change the name of the image buttons to be used.
+
+
+Version 1.45 -  2010-06-19
+-------------------------------------------
+•Fix: Property "lPrinted" now returns the correct value if user selected the "Printer Prompt" dialog (Printer preferences button), thanks to Martin Krivka
+•Updated Greek translation
+•Improvement: Now the preview title bar displays: "Page - PageTotal" when user selectes 1Page mode i.e.: "Page 5 - 1500" or: "Pages from %FP% to %LP%" when user selectes 2Page or 4Page mode i.e.: "Pages from 5 to 6" or "Pages from 5 to 8", thanks to Nick Porfyris
+
+
+Version 1.43 -  2010-06-16
+-------------------------------------------
+•Fix: Page# will appear translated in the Preview Form titlebar
+
+
+Version 1.42 -  2010-06-15
+-------------------------------------------
+•Fix: AddReport() new tweaks, thanks to Carlos Morandin
+•Fix: Additional verification in PDF Listener in analyzing "Dynamics" properties
+•New property: PDFnPageMode, numeric, Default = 0, 0 = Normal view, 1 = Show the outlines pane, 2 = Show the thumbnails pane, 3 = Full Screen
+•Improvement: Included support for labels (LBX) in FoxyPreviewerCaller.prg, thanks to Nick Porfyris
+
+
+Version 1.41 -  2010-06-14
+-------------------------------------------
+•Fix: ExcelListener now renders "&" characters correctly
+•Improvement: New parameter allowed in method "AddReport(tcFRX, tcClauses, tcAlias)", allowing specifying the alias to be selected when the desired report will be executed.
+•Tweak: Miniatures form will not show the nvigtion buttons when the quantity of pges will not exceed the existing quantity of pages. (by Jacques Parent)
+
+
+Version 1.40 -  2010-06-13
+-------------------------------------------
+•Improvement: "lUseListener()" tweaked
+•Improvement: new internal function to detect if the output printer is Dot-Matrix type; 
+   if positive, the report will be sent to the printer using REPORTBEHAVIOR 80
+•Improvement: Lots of cool tweaks from Jacques Pepere, specially in the miniatures form, 
+   allowing to have all available pages miniatures
+•Improvement: French translation from Jacques Pepere   
+•Improvement: New property "cEmailPRG"
+   Character, receives the nme of a PRG tht will fire your custom email.
+   In this PRG, you need to receive one parameter, ec tcFIle, that is the temporary output file
+   that you'll send by email.    
+   A complete sample, "MYSENDMAIL.PRG" is available, showing you how you can send your emails
+   Uses a CDOSYS class, courtesy of Sergey Berezniker
+   http://www.berezniker.com/content/pages/visual-foxpro/send-email-msn-email-account
+   http://www.berezniker.com/content/pages/visual-foxpro/cdo-2000-class-sending-emails
+
+•Fix: A bug in the ReportListener class was setting TALK ON, in the PDF generation.
+
+
+Version 1.35 -  2010-06-10
+-------------------------------------------
+•Fix: "AddReport()" bug, was not allowing chained reports, thnks to Craig Boyd 
+•Feature: New property - "lUseListener", when .F., REPORTBEHAVIOR will be set to 80 (old way), to generate good printings on dot-matrix printers.
+
+
+Version 1.31 -  2010-04-28
+-------------------------------------------
+•Fix: "SET TALK ON" bug in SP2 reporting bypassed. Now PDF and HTML outputs will not dirty the console
+http://cathypountney.blogspot.com/2009/04/set-talk-appears-to-be-on-when-running.html
+
+
+Version 1.30 -  2010-04-26
+-------------------------------------------
+•Fix: "Save As" menu working in all kinds of forms ? Thanks to Tushar
+
+
+Version 1.26b -  2010-04-02
+-------------------------------------------
+•Fix: EXCEL Listener destination output file fixed
+
+
+Version 1.26 -  2010-03-31
+-------------------------------------------
+•Fix: PDF Listener accepts GIFs
+•Fix: "Save As" menu working in Top-Level forms
+•Fix: PDF Listener will use Gdi+ to convert a not supported image
+•Enhancement: New MAPI function to send emails
+•Enhancement: The property "cDestFile" can be filled manually, in order to generate output files without previewing
+
+
+Version 1.25 -  2010-03-28
+-------------------------------------------
+•Fix: HTML output now works correctly in EXE.
+•Fix: Turned off SetConsole during PDF generation
+•New Property : "lQuietMode" && Default = .T., determines the QuietMode property for the listeners used
+•New Property : "lPDFasImage" && Default = .F., the PDF document will be an image document
+•Included the GREEK localized strings in FoxyPreviewer.H. Now we have translations for 9 languages available. Thanks to Nick Porfyris
+•Enhancement: PDFx received some tweaks in order to generate smaller files when repeated images are used in reports. Thanks to Luis Navas
+
+
+Version 1.24b -  2010-03-06
+-------------------------------------------
+•The "Priting Preferences" button now activates the "PRINTER PROMPT" dialog, that enables users to change the current printer, and all available settings. This provides the maximum customization.
+•Included a new file - FoxyPreviewer.H, that contains the localized constants for the strings.
+•Included the CZECH and PERSIAN localized strings in FoxyPreviewer.H. Now we have translations for 8 languages available.
+•New Property : "cCodePage" && Default = "CP1252", CodePage, to be used by PDF Listener
+•Updated FOxyPreviewerCaller.Prg to accept the new properties
+
+
+Version 1.24 -  2010-03-04
+-------------------------------------------
+•New "Printing Preferences" form, that allows selecting the range of pages to be printed, copies. It is activated by the old "Priting Preferences" button. A button was included in this new form to change the printer preferences.
+•New "Send to Email" button available
+•New Property : "cFormIcon" the file name of the icon to be used in the preview and other helper forms
+•New Property : "lEmailAuto" Automatically generates the report output file
+•New Property : "cEmailType" the file type to be used in Emails (PDF, RTF, HTML or XLS)
+•New Property : "lEmailed"   Returns TRUE if an email has been sent
+
+
+Version 1.23a -  2010-02-28
+-------------------------------------------
+•Fix in PDF Listeners, GIFs were not correctly rendered.  
+
+
+
+Version 1.23 -  2010-02-28
+-------------------------------------------
+•New tweaks for Top-Level forms - now the parent form will have its "Closable" property set as false during report preview, and reset on preview release
+•Fixes in RTF and PDF Listeners, now images with Isometric settings correctly rendered.  
+
+
+Version 1.22 -  2010-02-23
+-------------------------------------------
+•Improvement: New property: nDockType (see description below) 
+	nDockType	= .F. && false MEANS TO KEEP THE CURRENT DOCK SETTINGS FROM THE RESOURCE
+	*!*		? Undocks the toolbar or form.
+	*!*	 	 0 Positions the toolbar or form at the top of the main Visual FoxPro window.
+	*!*		 1 Positions the toolbar or form at the left side of the main Visual FoxPro window.
+	*!*		 2 Positions the toolbar or form at the right side of the main Visual FoxPro window.
+	*!*		 3 Positions the toolbar or form at the bottom of the main Visual FoxPro window.
+
+•Improvement: New PRG, FoxyPreviewerCaller.Prg, to be included in the EXE. It allows using embedded reports in the EXE, using the APP file. TO be better documented soon. See sample in downloads file. 
+   To use FoxyPreviewer.App, now you need to use the file FoxyPreviewerCaller.Prg, and incude it in your project.
+   That's the only file you need to include. Apart from that, distribute the file FoxyPreviewer.App
+
+   The usage is slightly different, but still super easy, instead of using the FoxyPreviewer class from the app, we'll use the one from the helper PRG. See also the TestForm.Scx, in the new button, "From EXE". The samples project now is including a report in the EXE:
+
+
+	SET PROCEDURE TO FoxyPreviewerCaller.prg ADDITIVE 
+
+	LOCAL loReport as "FoxyPreviewerCaller" OF "FoxyPreviewerCaller.Prg"
+	loReport = CREATEOBJECT("FoxyPreviewerCaller")
+
+	WITH loReport as FoxyPreviewerCaller 
+		.AddReport("Sample.frx", "RANGE 1,1 NODIALOG")
+		.RunReport()
+	
+		DO CASE
+		CASE .lPrinted	
+			MESSAGEBOX("Report was printed !",64, "Report status")
+
+		CASE .lSaved
+			MESSAGEBOX("Report was saved as file:" + CHR(13) + .cDestFile,;
+				64, ;
+				"Report status")
+
+		OTHERWISE
+			MESSAGEBOX("Report Preview was closed without saving or printing",48, "Report status")
+		ENDCASE
+	ENDWITH
+
+
+Version 1.21 -  2010-02-22
+-------------------------------------------
+•Fix: Enlarged label size for RTF output
+•Fix: Included file "FrxPreview.H" in distribution (needed by ExcelListener)
+•Tweak: Removed progress dialogs in spanish. All listeners have all progress dialogs disabled
+•New properties:
+   * Output types allowed in the "Save as.." button from the toolbar
+   * .lSaveAsImage		= .T.
+   * .lSaveAsHTML		= .T.
+   * .lSaveAsRTF		= .T.
+   * .lSaveAsXLS		= .T.
+   * .lSaveAsPDF		= .T.
+
+   * Defining the previewform.WindowState
+   * 0 = Normal, 2 = Maximized
+   * .nWindowState = 2 && Maximized
+
+
+Version 1.20 -  2010-02-21
+-------------------------------------------
+•Improvement: PDFListener now draws backgrounds for fields and labels
+•Improvement: RTFListener now draws backgrounds for fields and labels
+•New feature: Basic Excel output available (Using ExcelListener by ALejandro Sosa)
+
+•Important - Excel listener, differently from PDF and RTF listeners is being provided as is.
+   I will not support new features or improvements to this listener. As it is open source,
+   feel free to add your improvements and fixes. I'll be happy to update the version distributed
+   with FoxyPreviewer if you send it to me.
+   Using version 1.02 from UT, having disabled the automatic file opening after generation, and also removed the CTL32 Progressbar
+
+
+Version 1.18a -  2010-02-19
+-------------------------------------------
+•Improvement: RTFListener now accepts CMYK Jpeg images
+
+
+Version 1.18 -  2010-02-18
+-------------------------------------------
+•Fix: RTFListener now works correctly when _PageTotal is used
+•Improvement: PDFxListener now works with all kinds of images
+•Improvement: PDFxListener now draws transparent shapes
+
+
+Version 1.16 -  2010-02-13
+-------------------------------------------
+•Fix: TopForm property 
+•Fix: Now the _ReportPreview cache will be always cleared to avoid errors during toolbar rebuilding
+•Many tweaks in the _ReportPreview factory
+
+
+Version 1.15 -  2010-02-10
+-------------------------------------------
+•Fix: Context menu now works normally in Top-Level forms. 
+•MAJOR CHANGE: Now distributing a separate APP file that is a library that contains ALL the required files for FoxyPreviewer to run properly, including: LibHaru.dll, _GdiPlus.vcx, _ReportListener.vcx, FoxyPreviewer classes, PDFx, RTFListener, and all support images. This post will be updated soon, with more detailed information about these changes.
+
+
+Version 1.11 -  2010-02-09
+-------------------------------------------
+•Fix: Automatically setting SET("PATH") AND SET("PROCEDURE") to avoid compiling errors
+•Fix: Context menu now works normally when the toolbar is invisible.
+
+
+Version 1.10a -  2010-02-08
+-------------------------------------------
+•Fixed "lPrintVisible" property error (Zen Tes)
+•Included new "Printer preferences" item in context menu
+
+
+Version 1.10 -  2010-02-07
+-------------------------------------------
+•Fixed forced preview close (Vivek Deodhar)
+•Included new "Printer preferences" button (using codes from Barbara Peisch)
+
+
+Version 1.09 -  2010-02-05
+-------------------------------------------
+•Fixed Network printing again (Paco)
+•Tweak for context menu translation
+•Added support for TopLevel forms, and when using the "NOWAIT" clause.
+
+
+Version 1.08 -  2010-02-04
+-------------------------------------------
+•Included Italian translation (Fabio Lenzarini)
+•Fixed Network printing (Paco)
+•Fixed method RunReport, missing "This" in some lines of code (Benny Thomas)
+•Fixed RTFListener colors initialization, thanks to Hector Urrutia
+•Removed the "NORESET" clause on merged reports. Users should add it by themselves in case they need.
+•Renamed the ReportListener classes 
+    (PDFx became PR_PDFX and FRX_RTF became PR_RTFListener), 
+    in order to avoid people messing with the original versions from the authors.
+    The versions distributed with FoxyPreviewer are tweaked ones
+•Included a sample project, for you to create a testing EXE from it. Just double-click the SampleDistrib.Pjx file and compile the EXE.
+
+
+Version 1.07 -  2010-02-03
+-------------------------------------------
+•Included Turkish translation (Soykan Ozcelik)
+•Fixed RTF Listener was omitting 1st page when Range clause was used (Benny Thomas)
+•Fixed Property "lSaved" now becomes True when an image file is saved (Benny Thomas)
+
+
+Version 1.06 -  2010-02-02
+-------------------------------------------
+•Tweaked German translation (Stefan Wuebbe)
+•Fixed GotoPage dialog not working when toolbar was not visible (Vivek Deodhar)
+•Fixed Default printer in Combobox (Bernard)
+
+
+Version 1.05 -  2010-02-01
+-------------------------------------------
+•Included translation to German (Tom Knauf)
+•Fixed toolbar regeneration when user closed thetoolbar using the "X" button (Bernard)
+•Now compatible with VFP9 1st release and SP1 (SP2 strongly recommended)
+
+
+
+
+
+
+
+================================
+- New special property in _Screen.oFoxyPreviewer: "_nDataSessionMode" - numeric, default = 0, original usage. Use the value 1 if you have some strange issues, when some information disappears from your reports with no explanation. Please test if you have this issue and let me know, so that I can apply the fix to everybody.
