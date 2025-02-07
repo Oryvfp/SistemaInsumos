@@ -1,5 +1,0 @@
-USE c:\sistemayocca\proj\data\giesse  && Open Orders table
-
-
-DISPLAY pieza
-? "3/4"$RIGHT(pieza,2,1)  && Displays .T.
